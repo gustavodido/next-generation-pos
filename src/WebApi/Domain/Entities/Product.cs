@@ -8,6 +8,14 @@ namespace WebApi.Domain.Entities
         {
         }
 
+        public Product(Guid id, string name, string eanCode, decimal price)
+        {
+            Id = id;
+            Name = name;
+            EanCode = eanCode;
+            Price = price;
+        }
+
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string EanCode { get; set; }

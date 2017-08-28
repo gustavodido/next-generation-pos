@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebApi.Configuration;
+using WebApi.Domain.Queries;
+using WebApi.Services;
 
 namespace WebApi
 {
@@ -18,13 +20,19 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOptions();
-
             services.Configure<ApplicationConfiguration>(Configuration);
 
             services.AddMvc();
             
+            // Configuration
             services.AddTransient<DbConnectionFactory, DbConnectionFactory>();
             services.AddTransient<EvolveConfiguration, EvolveConfiguration>();
+            
+            // Services
+            services.AddTransient<DapperService, DapperService>();
+            
+            // Domain
+            services.AddTransient<GetProductsQuery, GetProductsQuery>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

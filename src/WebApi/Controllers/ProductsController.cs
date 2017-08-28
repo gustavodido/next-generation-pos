@@ -1,16 +1,24 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Domain.Entities;
+using WebApi.Domain.Queries;
 
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     public class ProductsController : Controller
     {
-        [HttpGet]
-        public IEnumerable<Product> Get()
+        private readonly GetProductsQuery _getProductsQuery;
+
+        public ProductsController(GetProductsQuery getProductsQuery)
         {
-            return new[] { new Product() };
+            _getProductsQuery = getProductsQuery;
+        }
+
+        [HttpGet]
+        public IEnumerable<Product> GetAll()
+        {
+            return _getProductsQuery.Run();
         }
     }
 }
