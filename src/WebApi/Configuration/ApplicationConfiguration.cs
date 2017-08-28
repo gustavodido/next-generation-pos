@@ -9,5 +9,6 @@
         public string CreateOrderCommand { get; set; }
         public string AddProductToOrderCommand { get; set; }
         public string GetOrderByIdQuery { get; set; }
+        public string GetProductsInBundleQuery { get; set; }
     }
 }

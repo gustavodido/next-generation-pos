@@ -20,7 +20,8 @@ namespace WebApi
             Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
                 .MinimumLevel.Debug()
-                .CreateLogger();        }
+                .CreateLogger();
+        }
 
         public IConfiguration Configuration { get; }
 
@@ -30,14 +31,14 @@ namespace WebApi
             services.Configure<ApplicationConfiguration>(Configuration);
 
             services.AddMvc();
-            
+
             // Configuration
             services.AddTransient<DbConnectionFactory, DbConnectionFactory>();
             services.AddTransient<EvolveConfiguration, EvolveConfiguration>();
-            
+
             // Services
             services.AddTransient<DapperService, DapperService>();
-            
+
             // Domain
             services.AddTransient<GetProductsQuery, GetProductsQuery>();
             services.AddTransient<SearchProductsQuery, SearchProductsQuery>();
@@ -45,7 +46,7 @@ namespace WebApi
             services.AddTransient<CreateOrderCommand, CreateOrderCommand>();
             services.AddTransient<AddProductToOrderCommand, AddProductToOrderCommand>();
             services.AddTransient<GetOrderByIdQuery, GetOrderByIdQuery>();
-            
+            services.AddTransient<AddBundleToOrderCommand, AddBundleToOrderCommand>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -56,9 +57,9 @@ namespace WebApi
             }
 
             loggerFactory.AddSerilog();
-            
+
             app.UseMvc();
-            
+
             app.ApplicationServices.GetService<EvolveConfiguration>().Migrate();
         }
     }

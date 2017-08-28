@@ -15,12 +15,14 @@ namespace WebApi.Controllers
         private readonly GetOrderByIdQuery _getOrderByIdQuery;
         private readonly CreateOrderCommand _createOrderCommand;
         private readonly AddProductToOrderCommand _addProductToOrderCommand;
+        private readonly AddBundleToOrderCommand _addBundleToOrderCommand;
 
-        public OrdersController(CreateOrderCommand createOrderCommand, AddProductToOrderCommand addProductToOrderCommand, GetOrderByIdQuery getOrderByIdQuery)
+        public OrdersController(CreateOrderCommand createOrderCommand, AddProductToOrderCommand addProductToOrderCommand, GetOrderByIdQuery getOrderByIdQuery, AddBundleToOrderCommand addBundleToOrderCommand)
         {
             _createOrderCommand = createOrderCommand;
             _addProductToOrderCommand = addProductToOrderCommand;
             _getOrderByIdQuery = getOrderByIdQuery;
+            _addBundleToOrderCommand = addBundleToOrderCommand;
         }
 
         [HttpGet("{id}")]
@@ -40,5 +42,12 @@ namespace WebApi.Controllers
         {
             _addProductToOrderCommand.Run(id, product.ProductId);
         }
+        
+        [HttpPut("{id}/bundle")]
+        public void AddBundle(Guid id, [FromBody]  BundleWrapper bundle)
+        {
+            _addBundleToOrderCommand.Run(id, bundle.BundleId);
+        }
+
     }
 }

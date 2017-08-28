@@ -15,14 +15,16 @@ namespace WebApi.Tests.Controllers
         private readonly CreateOrderCommand _createOrderCommand;
         private readonly AddProductToOrderCommand _addProductToOrderCommand;
         private readonly GetOrderByIdQuery _getOrderByIdQuery;
+        private readonly AddBundleToOrderCommand _addBundleToOrderCommand;
 
         public OrdersControllersTests()
         {
             _createOrderCommand = A.Fake<CreateOrderCommand>();
             _addProductToOrderCommand = A.Fake<AddProductToOrderCommand>();
             _getOrderByIdQuery = A.Fake<GetOrderByIdQuery>();
+            _addBundleToOrderCommand = A.Fake<AddBundleToOrderCommand>();
             
-            _ordersController = new OrdersController(_createOrderCommand, _addProductToOrderCommand, _getOrderByIdQuery);
+            _ordersController = new OrdersController(_createOrderCommand, _addProductToOrderCommand, _getOrderByIdQuery, _addBundleToOrderCommand);
         }
 
         [Fact]
@@ -73,6 +75,22 @@ namespace WebApi.Tests.Controllers
             A.CallTo(() => _getOrderByIdQuery.Run(Constants.IphoneCaseOrder.Id))
                 .MustHaveHappened();
         }
+        
+        [Fact]
+        public void AddBundleShouldAddBundleProductsToOrder()
+        {
+            // Given
+            A.CallTo(() => _addBundleToOrderCommand.Run(Constants.IphoneCaseOrder.Id, Constants.IphoneBundle.Id))
+                .DoesNothing();
+            
+            // When
+            _ordersController.AddBundle(Constants.IphoneCaseOrder.Id, new BundleWrapper(Constants.IphoneBundle.Id));
+            
+            // Then
+            A.CallTo(() => _addBundleToOrderCommand.Run(Constants.IphoneCaseOrder.Id, Constants.IphoneBundle.Id))
+                .MustHaveHappened();
+        }
+
 
     }
 }
