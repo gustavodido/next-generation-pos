@@ -2,6 +2,7 @@ using FakeItEasy;
 using WebApi.Controllers;
 using WebApi.Controllers.Models;
 using WebApi.Domain.Commands;
+using WebApi.Domain.Queries;
 using WebApi.Tests.Common;
 using Xunit;
 
@@ -13,13 +14,15 @@ namespace WebApi.Tests.Controllers
         
         private readonly CreateOrderCommand _createOrderCommand;
         private readonly AddProductToOrderCommand _addProductToOrderCommand;
+        private readonly GetOrderByIdQuery _getOrderByIdQuery;
 
         public OrdersControllersTests()
         {
             _createOrderCommand = A.Fake<CreateOrderCommand>();
             _addProductToOrderCommand = A.Fake<AddProductToOrderCommand>();
+            _getOrderByIdQuery = A.Fake<GetOrderByIdQuery>();
             
-            _ordersController = new OrdersController(_createOrderCommand, _addProductToOrderCommand);
+            _ordersController = new OrdersController(_createOrderCommand, _addProductToOrderCommand, _getOrderByIdQuery);
         }
 
         [Fact]
@@ -49,6 +52,25 @@ namespace WebApi.Tests.Controllers
             
             // Then
             A.CallTo(() => _addProductToOrderCommand.Run(Constants.IphoneCaseOrder.Id, Constants.IphoneCase.Id))
+                .MustHaveHappened();
+        }
+        
+        [Fact]
+        public void GetShouldReturnOrderById()
+        {
+            // Given
+            var expectedProductsInOrder = new [] { Constants.IphoneCase };
+
+            A.CallTo(() => _getOrderByIdQuery.Run(Constants.IphoneCaseOrder.Id))
+                .Returns(expectedProductsInOrder);
+            
+            // When
+            var products = _ordersController.Get(Constants.IphoneCaseOrder.Id);
+            
+            // Then
+            Assert.Equal(expectedProductsInOrder, products);
+
+            A.CallTo(() => _getOrderByIdQuery.Run(Constants.IphoneCaseOrder.Id))
                 .MustHaveHappened();
         }
 

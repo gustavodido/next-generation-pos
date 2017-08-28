@@ -38,6 +38,7 @@ namespace WebApi
             services.AddTransient<GetProductBundlesQuery, GetProductBundlesQuery>();
             services.AddTransient<CreateOrderCommand, CreateOrderCommand>();
             services.AddTransient<AddProductToOrderCommand, AddProductToOrderCommand>();
+            services.AddTransient<GetOrderByIdQuery, GetOrderByIdQuery>();
             
         }
 

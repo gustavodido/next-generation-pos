@@ -1,22 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Controllers.Models;
 using WebApi.Domain.Commands;
 using WebApi.Domain.Entities;
+using WebApi.Domain.Queries;
 
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     public class OrdersController
     {
+        private readonly GetOrderByIdQuery _getOrderByIdQuery;
         private readonly CreateOrderCommand _createOrderCommand;
         private readonly AddProductToOrderCommand _addProductToOrderCommand;
 
-        public OrdersController(CreateOrderCommand createOrderCommand, AddProductToOrderCommand addProductToOrderCommand)
+        public OrdersController(CreateOrderCommand createOrderCommand, AddProductToOrderCommand addProductToOrderCommand, GetOrderByIdQuery getOrderByIdQuery)
         {
             _createOrderCommand = createOrderCommand;
             _addProductToOrderCommand = addProductToOrderCommand;
+            _getOrderByIdQuery = getOrderByIdQuery;
+        }
+
+        [HttpGet("{id}")]
+        public IEnumerable<Product> Get(Guid id)
+        {
+            return _getOrderByIdQuery.Run(id);
         }
 
         [HttpPost]
