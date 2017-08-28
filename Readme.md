@@ -11,3 +11,6 @@ dotnet add WebApi.csproj package Dapper
 
 TODO
 Implement HATEOAS
+Logging
+Error Handling
+Integration Tests

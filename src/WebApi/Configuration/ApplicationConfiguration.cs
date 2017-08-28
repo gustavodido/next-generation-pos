@@ -7,5 +7,6 @@
         public string SearchProductsQuery { get; set; }
         public string GetProductBundlesQuery { get; set; }
         public string CreateOrderCommand { get; set; }
+        public string AddProductToOrderCommand { get; set; }
     }
 }

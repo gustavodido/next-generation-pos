@@ -34,11 +34,19 @@ namespace WebApi.Services
             }
         }
 
-        public virtual T ExecuteScalar<T>(string query)
+        public virtual T ExecuteScalar<T>(string command)
         {
             using (var connection = _dbConnectionFactory.Create())
             {
-                return connection.ExecuteScalar<T>(query);
+                return connection.ExecuteScalar<T>(command);
+            }
+        }
+
+        public virtual void Execute(string command, object param)
+        {
+            using (var connection = _dbConnectionFactory.Create())
+            {
+                connection.Execute(command, param);
             }
         }
 

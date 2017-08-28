@@ -3,8 +3,6 @@ using FakeItEasy;
 using Microsoft.Extensions.Options;
 using WebApi.Configuration;
 using WebApi.Domain.Commands;
-using WebApi.Domain.Entities;
-using WebApi.Domain.Queries;
 using WebApi.Services;
 using WebApi.Tests.Common;
 using Xunit;

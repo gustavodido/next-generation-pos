@@ -37,6 +37,7 @@ namespace WebApi
             services.AddTransient<SearchProductsQuery, SearchProductsQuery>();
             services.AddTransient<GetProductBundlesQuery, GetProductBundlesQuery>();
             services.AddTransient<CreateOrderCommand, CreateOrderCommand>();
+            services.AddTransient<AddProductToOrderCommand, AddProductToOrderCommand>();
             
         }
 
