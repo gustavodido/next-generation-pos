@@ -20,7 +20,7 @@ namespace WebApi.Tests.Controllers
             _searchProductsQuery = A.Fake<SearchProductsQuery>();
             _getProductBundles = A.Fake<GetProductBundlesQuery>();
             
-            _productController = new ProductsController(_getProductsQuery, _searchProductsQuery, _getProductBundles);
+            _productController = new ProductsController(_getProductsQuery, _searchProductsQuery, _getProductBundles, null);
         }
 
         [Fact]

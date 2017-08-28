@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
       "Dapper/1.50.2": {
@@ -3098,6 +3098,42 @@
             "assetType": "native",
             "rid": "win-x86"
           }
+        }
+      },
+      "Serilog/2.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.0.1",
+          "System.Collections": "4.0.11",
+          "System.Collections.NonGeneric": "4.0.1",
+          "System.Dynamic.Runtime": "4.0.11",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Text.RegularExpressions": "4.1.0",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/Serilog.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Serilog.dll": {}
+        }
+      },
+      "Serilog.Extensions.Logging/2.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "2.0.0",
+          "Serilog": "2.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Serilog.Extensions.Logging.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Serilog.Extensions.Logging.dll": {}
         }
       },
       "SQLitePCLRaw.bundle_green/1.1.7": {
@@ -8179,6 +8215,42 @@
         "version.txt"
       ]
     },
+    "Serilog/2.5.0": {
+      "sha512": "JwwkgNYNFKT4kQZ3qBV3VqPgchUg1A6FnlFa9hgyanylwBhJ7eTFl3pgLVxijFEb+oHLImRcMaTsMzBt2AG0aQ==",
+      "type": "package",
+      "path": "serilog/2.5.0",
+      "files": [
+        "lib/net45/Serilog.dll",
+        "lib/net45/Serilog.xml",
+        "lib/net46/Serilog.dll",
+        "lib/net46/Serilog.xml",
+        "lib/netstandard1.0/Serilog.dll",
+        "lib/netstandard1.0/Serilog.xml",
+        "lib/netstandard1.3/Serilog.dll",
+        "lib/netstandard1.3/Serilog.xml",
+        "serilog.2.5.0.nupkg.sha512",
+        "serilog.nuspec"
+      ]
+    },
+    "Serilog.Extensions.Logging/2.0.2": {
+      "sha512": "PYAkzUn/VV16Es7U06BfEhNZEltnYWu0WFCM4d2lLY/dvlA7xMwFXBuGRxR0XvEBPoOxPorjhFLy9txwiMO6rg==",
+      "type": "package",
+      "path": "serilog.extensions.logging/2.0.2",
+      "files": [
+        "lib/net45/Serilog.Extensions.Logging.dll",
+        "lib/net45/Serilog.Extensions.Logging.xml",
+        "lib/net46/Serilog.Extensions.Logging.dll",
+        "lib/net46/Serilog.Extensions.Logging.xml",
+        "lib/net461/Serilog.Extensions.Logging.dll",
+        "lib/net461/Serilog.Extensions.Logging.xml",
+        "lib/netstandard1.3/Serilog.Extensions.Logging.dll",
+        "lib/netstandard1.3/Serilog.Extensions.Logging.xml",
+        "lib/netstandard2.0/Serilog.Extensions.Logging.dll",
+        "lib/netstandard2.0/Serilog.Extensions.Logging.xml",
+        "serilog.extensions.logging.2.0.2.nupkg.sha512",
+        "serilog.extensions.logging.nuspec"
+      ]
+    },
     "SQLitePCLRaw.bundle_green/1.1.7": {
       "sha512": "Kw+n4CUhQ8S4YAPmpRUldO8S7c4LU7HHukJF0v5Sfggf8Ia9YVdIh0dYkMvKvS+DTX+OBORSMqPM0CGfAzFtVA==",
       "type": "package",
@@ -13125,11 +13197,14 @@
       "Evolve >= 1.4.0",
       "Microsoft.AspNetCore.All >= 2.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
-      "Npgsql >= 3.2.5"
+      "Npgsql >= 3.2.5",
+      "Serilog >= 2.5.0",
+      "Serilog.Extensions.Logging >= 2.0.2"
     ]
   },
   "packageFolders": {
-    "/Users/gdomenic/.nuget/packages/": {}
+    "/Users/gdomenic/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -13137,15 +13212,30 @@
       "projectUniqueName": "/Users/gdomenic/dev/personal/next-generation-pos/src/WebApi/WebApi.csproj",
       "projectName": "WebApi",
       "projectPath": "/Users/gdomenic/dev/personal/next-generation-pos/src/WebApi/WebApi.csproj",
+      "packagesPath": "/Users/gdomenic/.nuget/packages/",
       "outputPath": "/Users/gdomenic/dev/personal/next-generation-pos/src/WebApi/obj/",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "/Users/gdomenic/.nuget/NuGet/NuGet.Config"
+      ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {}
         }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
       }
     },
     "frameworks": {
@@ -13153,7 +13243,8 @@
         "dependencies": {
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "2.0.0"
+            "version": "2.0.0",
+            "autoReferenced": true
           },
           "Dapper": {
             "target": "Package",
@@ -13170,8 +13261,21 @@
           "Npgsql": {
             "target": "Package",
             "version": "3.2.5"
+          },
+          "Serilog": {
+            "target": "Package",
+            "version": "2.5.0"
+          },
+          "Serilog.Extensions.Logging": {
+            "target": "Package",
+            "version": "2.0.2"
           }
-        }
+        },
+        "imports": [
+          "net461"
+        ],
+        "assetTargetFallback": true,
+        "warn": true
       }
     }
   }

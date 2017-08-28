@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Serilog;
 using WebApi.Configuration;
 using WebApi.Domain.Commands;
 using WebApi.Domain.Queries;
@@ -14,7 +16,11 @@ namespace WebApi
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-        }
+
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .MinimumLevel.Debug()
+                .CreateLogger();        }
 
         public IConfiguration Configuration { get; }
 
@@ -42,13 +48,17 @@ namespace WebApi
             
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            
 
+            loggerFactory.AddSerilog();
+            
             app.UseMvc();
             
             app.ApplicationServices.GetService<EvolveConfiguration>().Migrate();
