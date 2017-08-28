@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 2,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
       "Libuv/1.10.0": {
@@ -12533,8 +12533,7 @@
     ]
   },
   "packageFolders": {
-    "/Users/gdomenic/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "/Users/gdomenic/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
@@ -12542,30 +12541,15 @@
       "projectUniqueName": "/Users/gdomenic/dev/personal/next-generation-pos/src/WebApi/WebApi.csproj",
       "projectName": "WebApi",
       "projectPath": "/Users/gdomenic/dev/personal/next-generation-pos/src/WebApi/WebApi.csproj",
-      "packagesPath": "/Users/gdomenic/.nuget/packages/",
       "outputPath": "/Users/gdomenic/dev/personal/next-generation-pos/src/WebApi/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-      ],
-      "configFilePaths": [
-        "/Users/gdomenic/.nuget/NuGet/NuGet.Config"
-      ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
-      "sources": {
-        "https://api.nuget.org/v3/index.json": {}
-      },
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {}
         }
-      },
-      "warningProperties": {
-        "warnAsError": [
-          "NU1605"
-        ]
       }
     },
     "frameworks": {
@@ -12573,19 +12557,13 @@
         "dependencies": {
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "2.0.0",
-            "autoReferenced": true
+            "version": "2.0.0"
           },
           "Microsoft.AspNetCore.All": {
             "target": "Package",
             "version": "2.0.0"
           }
-        },
-        "imports": [
-          "net461"
-        ],
-        "assetTargetFallback": true,
-        "warn": true
+        }
       }
     }
   }
