@@ -6,7 +6,7 @@ using Xunit;
 
 namespace WebApi.Tests.Controllers
 {
-    public class ProductControllersTests
+    public class ProductsControllersTests
     {
         private readonly ProductsController _productController;
         
@@ -14,7 +14,7 @@ namespace WebApi.Tests.Controllers
         private readonly SearchProductsQuery _searchProductsQuery;
         private readonly GetProductBundlesQuery _getProductBundles;
 
-        public ProductControllersTests()
+        public ProductsControllersTests()
         {
             _getProductsQuery = A.Fake<GetProductsQuery>();
             _searchProductsQuery = A.Fake<SearchProductsQuery>();

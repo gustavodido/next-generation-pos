@@ -2,28 +2,23 @@
 
 namespace WebApi.Domain.Entities
 {
-    public class Product
+    public class Order
     {
-        public Product()
+        public Order()
         {
         }
 
-        public Product(Guid id, string name, string eanCode, decimal price)
+        public Order(Guid id)
         {
             Id = id;
-            Name = name;
-            EanCode = eanCode;
-            Price = price;
         }
 
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string EanCode { get; set; }
-        public decimal Price { get; set; }
+
         
         public override bool Equals(object obj)
         {
-            var other = obj as Product;
+            var other = obj as Order;
             return other != null && (other.Id.Equals(Id));
         }
 

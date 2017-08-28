@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebApi.Configuration;
+using WebApi.Domain.Commands;
 using WebApi.Domain.Queries;
 using WebApi.Services;
 
@@ -35,6 +36,7 @@ namespace WebApi
             services.AddTransient<GetProductsQuery, GetProductsQuery>();
             services.AddTransient<SearchProductsQuery, SearchProductsQuery>();
             services.AddTransient<GetProductBundlesQuery, GetProductBundlesQuery>();
+            services.AddTransient<CreateOrderCommand, CreateOrderCommand>();
             
         }
 
