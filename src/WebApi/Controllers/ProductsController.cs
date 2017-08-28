@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Domain.Entities;
 using WebApi.Domain.Queries;
@@ -10,11 +11,13 @@ namespace WebApi.Controllers
     {
         private readonly GetProductsQuery _getProductsQuery;
         private readonly SearchProductsQuery _searchProductsQuery;
+        private readonly GetProductBundlesQuery _getProductBundlesQuery;
 
-        public ProductsController(GetProductsQuery getProductsQuery, SearchProductsQuery searchProductsQuery)
+        public ProductsController(GetProductsQuery getProductsQuery, SearchProductsQuery searchProductsQuery, GetProductBundlesQuery getProductBundlesQuery)
         {
             _getProductsQuery = getProductsQuery;
             _searchProductsQuery = searchProductsQuery;
+            _getProductBundlesQuery = getProductBundlesQuery;
         }
 
         [HttpGet]
@@ -30,5 +33,11 @@ namespace WebApi.Controllers
             return _searchProductsQuery.Run(term);
         }
 
+        [HttpGet]
+        [Route("{id}/bundles")]
+        public IEnumerable<Bundle> GetBundles(Guid id)
+        {
+            return _getProductBundlesQuery.Run(id);
+        }
     }
 }

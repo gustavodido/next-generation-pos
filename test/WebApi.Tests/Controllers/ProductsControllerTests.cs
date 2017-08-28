@@ -12,13 +12,15 @@ namespace WebApi.Tests.Controllers
         
         private readonly GetProductsQuery _getProductsQuery;
         private readonly SearchProductsQuery _searchProductsQuery;
+        private readonly GetProductBundlesQuery _getProductBundles;
 
         public ProductControllersTests()
         {
             _getProductsQuery = A.Fake<GetProductsQuery>();
             _searchProductsQuery = A.Fake<SearchProductsQuery>();
+            _getProductBundles = A.Fake<GetProductBundlesQuery>();
             
-            _productController = new ProductsController(_getProductsQuery, _searchProductsQuery);
+            _productController = new ProductsController(_getProductsQuery, _searchProductsQuery, _getProductBundles);
         }
 
         [Fact]
@@ -54,6 +56,23 @@ namespace WebApi.Tests.Controllers
 
             A.CallTo(() => _searchProductsQuery.Run(Constants.Monitor.Name)).MustHaveHappened();
         }
-        
+
+        [Fact]
+        public void GetBundlesSouldReturnFilteredProducts()
+        {
+            // Given
+            var expectedBundles = new[] {Constants.IphoneBundle };
+            
+            A.CallTo(() => _getProductBundles.Run(Constants.IphoneCase.Id)).Returns(expectedBundles);
+            
+            // When
+            var bundles = _productController.GetBundles(Constants.IphoneCase.Id);
+            
+            // Then
+            Assert.Equal(expectedBundles, bundles);
+
+            A.CallTo(() => _getProductBundles.Run(Constants.IphoneCase.Id)).MustHaveHappened();
+        }
+
     }
 }

@@ -34,6 +34,7 @@ namespace WebApi
             // Domain
             services.AddTransient<GetProductsQuery, GetProductsQuery>();
             services.AddTransient<SearchProductsQuery, SearchProductsQuery>();
+            services.AddTransient<GetProductBundlesQuery, GetProductBundlesQuery>();
             
         }
 
