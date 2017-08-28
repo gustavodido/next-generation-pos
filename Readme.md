@@ -1,16 +1,14 @@
+# Next Generation Point of Sales
 
-dotnet add WebApi.csproj package Evolve
-dotnet add WebApi.csproj package Npgsql
-dotnet run -p src/WebApi/WebApi.csproj
+## Goal
 
- dotnet add WebApi.Tests.csproj package FakeItEasy
+NDA
 
-dotnet add WebApi.csproj package Dapper
+## Running
 
- dotnet add WebApi.Tests.csproj reference ../../src/WebApi/WebApi.csproj
+## Todo
 
-TODO
-Implement HATEOAS
-Logging
-Error Handling
-Integration Tests
+* Add Integration Tests
+* Implement HATEOAS
+* Add Logging infrastructure
+* Add Error Handling
