@@ -10,25 +10,20 @@ namespace WebApi.Controllers
     [Route("api/[controller]")]
     public class ProductsController : Controller
     {
-        private readonly ILogger<ProductsController> _logger;
-        
         private readonly GetProductsQuery _getProductsQuery;
         private readonly SearchProductsQuery _searchProductsQuery;
         private readonly GetProductBundlesQuery _getProductBundlesQuery;
 
-        public ProductsController(GetProductsQuery getProductsQuery, SearchProductsQuery searchProductsQuery, GetProductBundlesQuery getProductBundlesQuery, ILogger<ProductsController> logger)
+        public ProductsController(GetProductsQuery getProductsQuery, SearchProductsQuery searchProductsQuery, GetProductBundlesQuery getProductBundlesQuery)
         {
             _getProductsQuery = getProductsQuery;
             _searchProductsQuery = searchProductsQuery;
             _getProductBundlesQuery = getProductBundlesQuery;
-            _logger = logger;
         }
 
         [HttpGet]
         public IEnumerable<Product> GetAll()
         {
-            _logger.LogInformation("kladjadkljadslkadjdaskl");
-            
             return _getProductsQuery.Run();
         }
         
