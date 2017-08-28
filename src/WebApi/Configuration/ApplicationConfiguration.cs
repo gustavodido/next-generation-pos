@@ -10,5 +10,6 @@
         public string AddProductToOrderCommand { get; set; }
         public string GetOrderByIdQuery { get; set; }
         public string GetProductsInBundleQuery { get; set; }
+        public string CreateUserCommand { get; set; }
     }
 }

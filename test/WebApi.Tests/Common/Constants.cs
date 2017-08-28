@@ -24,5 +24,7 @@ namespace WebApi.Tests.Common
             BundleProductMap.Parse(IphoneBundle, IphoneScreenProtector);
         
         public static Order IphoneCaseOrder = new Order(Guid.NewGuid());
+        
+        public static Customer CoolCustomer  = new Customer(Guid.Empty, "Cool Name");
     }
 }

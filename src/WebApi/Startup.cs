@@ -47,6 +47,7 @@ namespace WebApi
             services.AddTransient<AddProductToOrderCommand, AddProductToOrderCommand>();
             services.AddTransient<GetOrderByIdQuery, GetOrderByIdQuery>();
             services.AddTransient<AddBundleToOrderCommand, AddBundleToOrderCommand>();
+            services.AddTransient<CreateCustomerCommand, CreateCustomerCommand>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

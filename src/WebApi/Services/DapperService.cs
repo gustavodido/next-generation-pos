@@ -41,6 +41,15 @@ namespace WebApi.Services
                 return connection.ExecuteScalar<T>(command);
             }
         }
+        
+        public virtual T ExecuteScalar<T>(string command ,object param)
+        {
+            using (var connection = _dbConnectionFactory.Create())
+            {
+                return connection.ExecuteScalar<T>(command, param);
+            }
+        }
+
 
         public virtual void Execute(string command, object param)
         {
