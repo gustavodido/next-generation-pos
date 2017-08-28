@@ -20,5 +20,18 @@ namespace WebApi.Domain.Entities
         public string Name { get; set; }
         public string EanCode { get; set; }
         public decimal Price { get; set; }
+        
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            var other = (Product) obj;
+            return other.Id.Equals(Id);
+        }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
+
     }
 }
