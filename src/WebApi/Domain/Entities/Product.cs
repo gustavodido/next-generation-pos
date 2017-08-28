@@ -10,7 +10,7 @@ namespace WebApi.Domain.Entities
 
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public String Description { get; set; }
-        public decimal Prive { get; set; }
+        public string EanCode { get; set; }
+        public decimal Price { get; set; }
     }
 }
