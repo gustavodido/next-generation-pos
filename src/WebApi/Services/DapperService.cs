@@ -23,5 +23,16 @@ namespace WebApi.Services
                     .ToList();
             }
         }
+        
+        public virtual IEnumerable<T> List<T>(string query, object param) where T : class
+        {
+            using (var connection = _dbConnectionFactory.Create())
+            {
+                return connection
+                    .Query<T>(query, param)
+                    .ToList();
+            }
+        }
+
     }
 }

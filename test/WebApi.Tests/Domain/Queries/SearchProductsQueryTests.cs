@@ -9,36 +9,36 @@ using Xunit;
 
 namespace WebApi.Tests.Domain.Queries
 {
-    public class GetProductsQueryTests
+    public class SearchProductsQueryTests
     {
         private readonly DapperService _dapperService;
         private readonly IOptions<ApplicationConfiguration> _applicationConfiguration;
 
-        private readonly GetProductsQuery _getProductsQuery;
+        private readonly SearchProductsQuery _searchProductsQuery;
 
-        public GetProductsQueryTests()
+        public SearchProductsQueryTests()
         {
             _dapperService = A.Fake<DapperService>();
             _applicationConfiguration = A.Fake<IOptions<ApplicationConfiguration>>();
 
-            _getProductsQuery = new GetProductsQuery(_applicationConfiguration, _dapperService);
+            _searchProductsQuery = new SearchProductsQuery(_applicationConfiguration, _dapperService);
         }
 
         [Fact]
-        public void RunShouldReturnAllProducts()
+        public void RunShouldReturnFilteredProducts()
         {
             // Given
             var expectedProducts = new[] {Constants.Monitor, Constants.Notebook};
 
-            A.CallTo(() => _dapperService.List<Product>(A<string>.Ignored)).Returns(expectedProducts);
+            A.CallTo(() => _dapperService.List<Product>(A<string>.Ignored, A<object>.Ignored)).Returns(expectedProducts);
 
             // When
-            var products = _getProductsQuery.Run();
+            var products = _searchProductsQuery.Run(Constants.Monitor.Name);
 
             // Then
             Assert.Equal(expectedProducts, products);
 
-            A.CallTo(() => _dapperService.List<Product>(A<string>.Ignored)).MustHaveHappened();
+            A.CallTo(() => _dapperService.List<Product>(A<string>.Ignored, A<object>.Ignored)).MustHaveHappened();
         }
     }
 }

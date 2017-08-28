@@ -4,5 +4,6 @@
     {
         public string ConnectionString { get; set; }
         public string GetProductsQuery { get; set; }
+        public string SearchProductsQuery { get; set; }
     }
 }

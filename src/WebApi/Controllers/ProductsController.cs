@@ -9,10 +9,12 @@ namespace WebApi.Controllers
     public class ProductsController : Controller
     {
         private readonly GetProductsQuery _getProductsQuery;
+        private readonly SearchProductsQuery _searchProductsQuery;
 
-        public ProductsController(GetProductsQuery getProductsQuery)
+        public ProductsController(GetProductsQuery getProductsQuery, SearchProductsQuery searchProductsQuery)
         {
             _getProductsQuery = getProductsQuery;
+            _searchProductsQuery = searchProductsQuery;
         }
 
         [HttpGet]
@@ -20,5 +22,13 @@ namespace WebApi.Controllers
         {
             return _getProductsQuery.Run();
         }
+        
+        [HttpGet]
+        [Route("{term}")]
+        public IEnumerable<Product> Search(string term)
+        {
+            return _searchProductsQuery.Run(term);
+        }
+
     }
 }

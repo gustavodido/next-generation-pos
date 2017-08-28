@@ -33,6 +33,8 @@ namespace WebApi
             
             // Domain
             services.AddTransient<GetProductsQuery, GetProductsQuery>();
+            services.AddTransient<SearchProductsQuery, SearchProductsQuery>();
+            
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
