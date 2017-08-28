@@ -22,9 +22,8 @@ namespace WebApi.Domain.Entities
 
         public override bool Equals(object obj)
         {
-            if (obj == null) return false;
-            var other = (Bundle) obj;
-            return other.Id.Equals(Id);
+            var other = obj as Bundle;
+            return other != null && other.Id.Equals(Id);
         }
 
         public override int GetHashCode()
