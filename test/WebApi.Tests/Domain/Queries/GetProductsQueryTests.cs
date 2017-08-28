@@ -12,16 +12,14 @@ namespace WebApi.Tests.Domain.Queries
     public class GetProductsQueryTests
     {
         private readonly DapperService _dapperService;
-        private readonly IOptions<ApplicationConfiguration> _applicationConfiguration;
 
         private readonly GetProductsQuery _getProductsQuery;
 
         public GetProductsQueryTests()
         {
             _dapperService = A.Fake<DapperService>();
-            _applicationConfiguration = A.Fake<IOptions<ApplicationConfiguration>>();
 
-            _getProductsQuery = new GetProductsQuery(_applicationConfiguration, _dapperService);
+            _getProductsQuery = new GetProductsQuery(A.Fake<IOptions<ApplicationConfiguration>>(), _dapperService);
         }
 
         [Fact]
