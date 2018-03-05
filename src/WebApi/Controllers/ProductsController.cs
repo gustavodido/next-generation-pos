@@ -10,9 +10,9 @@ namespace WebApi.Controllers
     [Route("api/[controller]")]
     public class ProductsController : Controller
     {
-        private readonly GetProductsQuery _getProductsQuery;
         private readonly SearchProductsQuery _searchProductsQuery;
         private readonly GetProductBundlesQuery _getProductBundlesQuery;
+        private readonly GetProductsQuery _getProductsQuery;
 
         public ProductsController(GetProductsQuery getProductsQuery, SearchProductsQuery searchProductsQuery, GetProductBundlesQuery getProductBundlesQuery)
         {
