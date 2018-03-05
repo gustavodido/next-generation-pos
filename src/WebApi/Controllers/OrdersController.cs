@@ -14,8 +14,8 @@ namespace WebApi.Controllers
     {
         private readonly AddProductToOrderCommand _addProductToOrderCommand;
         private readonly AddBundleToOrderCommand _addBundleToOrderCommand;
-        private readonly GetOrderByIdQuery _getOrderByIdQuery;
         private readonly CreateOrderCommand _createOrderCommand;
+        private readonly GetOrderByIdQuery _getOrderByIdQuery;
 
         public OrdersController(CreateOrderCommand createOrderCommand, AddProductToOrderCommand addProductToOrderCommand, GetOrderByIdQuery getOrderByIdQuery, AddBundleToOrderCommand addBundleToOrderCommand)
         {
