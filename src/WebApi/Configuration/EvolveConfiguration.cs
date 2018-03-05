@@ -16,6 +16,7 @@ namespace WebApi.Configuration
             using (var connection = _dbConnectionFactory.Create())
             {
                 var evolve = new Evolve.Evolve(connection, Console.WriteLine);
+                // evolve.Clean();
                 evolve.Migrate();
             }
         }
