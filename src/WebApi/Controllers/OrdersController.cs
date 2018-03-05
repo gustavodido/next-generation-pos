@@ -12,10 +12,10 @@ namespace WebApi.Controllers
     [Route("api/[controller]")]
     public class OrdersController
     {
-        private readonly GetOrderByIdQuery _getOrderByIdQuery;
         private readonly CreateOrderCommand _createOrderCommand;
         private readonly AddProductToOrderCommand _addProductToOrderCommand;
         private readonly AddBundleToOrderCommand _addBundleToOrderCommand;
+        private readonly GetOrderByIdQuery _getOrderByIdQuery;
 
         public OrdersController(CreateOrderCommand createOrderCommand, AddProductToOrderCommand addProductToOrderCommand, GetOrderByIdQuery getOrderByIdQuery, AddBundleToOrderCommand addBundleToOrderCommand)
         {
