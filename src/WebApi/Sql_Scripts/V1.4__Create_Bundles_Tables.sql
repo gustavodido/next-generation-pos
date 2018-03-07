@@ -1,3 +1,5 @@
+-- Bundle tables and relations
+
 CREATE TABLE BUNDLES (
   ID uuid PRIMARY KEY,
   DISCOUNT DECIMAL(7,2) NOT NULL
