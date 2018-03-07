@@ -1,3 +1,5 @@
+-- Insert bundles
+
 INSERT INTO bundles (id, discount) values (uuid_generate_v4(), 0.8);
 INSERT INTO bundles (id, discount) values (uuid_generate_v4(), 0.5);
 
