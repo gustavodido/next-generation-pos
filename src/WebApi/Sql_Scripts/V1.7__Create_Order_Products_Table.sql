@@ -1,3 +1,5 @@
+-- Create order product relation
+
 CREATE TABLE ORDER_PRODUCTS (
   ORDER_ID uuid REFERENCES ORDERS (ID),
   PRODUCT_ID uuid REFERENCES PRODUCTS(ID),
